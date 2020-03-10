@@ -1,0 +1,18 @@
+server:
+  port: 8333
+spring:
+  application:
+    name: user-service
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true  #开启健康检查
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  instance:
+    hostname: localhost
+    #续约心跳得间隔时间，默认30秒，改成5秒
+    lease-renewal-interval-in-seconds: 5
+    #续约得过期时间，默认90秒，改成10秒。不能设置太短，否则会因为网络波动造成注册状态得不断变化
+    lease-expiration-duration-in-seconds: 10
