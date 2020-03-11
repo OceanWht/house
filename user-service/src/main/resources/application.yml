@@ -3,16 +3,33 @@ server:
 spring:
   application:
     name: user-service
+  druid:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/user?useSSL=false&serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    username: root
+    password: root
+    #æœ€å¤§è¿æ¥æ•°
+    maxActive: 30
+    #æœ€å°è¿æ¥æ•°
+    minIdle: 5
+    #è·å–è¿æ¥å¾—æœ€å¤§ç­‰å¾…æ—¶é—´
+    maxWait: 10000
+    #è§£å†³mysql8å°æ—¶é—®é¢˜
+    validationQuery: SELECT 'X'
+    #ç©ºé—²è¿æ¥æ£€æŸ¥æ—¶é—´é—´éš”
+    timeBetweenEvictionRunsMillis: 60000
+    #ç©ºé—²è¿æ¥æœ€å°ç©ºé—²æ—¶é—´
+    minEvictableIdleTimeMillis: 300000
 
 eureka:
   client:
     healthcheck:
-      enabled: true  #¿ªÆô½¡¿µ¼ì²é
+      enabled: true
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://localhost:8666/eureka/
   instance:
     hostname: localhost
-    #ĞøÔ¼ĞÄÌøµÃ¼ä¸ôÊ±¼ä£¬Ä¬ÈÏ30Ãë£¬¸Ä³É5Ãë
     lease-renewal-interval-in-seconds: 5
-    #ĞøÔ¼µÃ¹ıÆÚÊ±¼ä£¬Ä¬ÈÏ90Ãë£¬¸Ä³É10Ãë¡£²»ÄÜÉèÖÃÌ«¶Ì£¬·ñÔò»áÒòÎªÍøÂç²¨¶¯Ôì³É×¢²á×´Ì¬µÃ²»¶Ï±ä»¯
     lease-expiration-duration-in-seconds: 10
+
+

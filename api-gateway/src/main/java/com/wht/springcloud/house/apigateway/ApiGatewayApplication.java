@@ -1,11 +1,11 @@
-package com.wht.springcloud.house.eurakaserver;
+package com.wht.springcloud.house.apigateway;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -13,15 +13,22 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@EnableEurekaServer
+@EnableDiscoveryClient
 @SpringBootApplication
-public class EurakaServerApplication {
+@Controller
+public class ApiGatewayApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(EurakaServerApplication.class, args);
+        SpringApplication.run(ApiGatewayApplication.class, args);
     }
 
     @Autowired
     DiscoveryClient discoveryClient;
 
+    @RequestMapping("/index1")
+    @ResponseBody
+    public List<ServiceInstance> getRegiest(){
+        List<ServiceInstance> result = discoveryClient.getInstances("user-service");
+        return result;
+    }
 }

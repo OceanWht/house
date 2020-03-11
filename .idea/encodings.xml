@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$/api-gateway" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/euraka-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/euraka-server/src/main/resources/application.yml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/user-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/user-service/src/main/java/com/wht/springcloud/house/userservice/config/DruidConfig.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/user-service/src/main/resources/application.yml" charset="GBK" />
+    <file url="PROJECT" charset="GBK" />
   </component>
 </project>
