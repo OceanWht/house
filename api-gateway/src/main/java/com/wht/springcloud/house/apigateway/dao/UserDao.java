@@ -14,7 +14,9 @@ public class UserDao {
     GenericRest genericRest;
 
     public String getUserName(Long id){
-        String url = "http://user-service/getUserName?id="+id;
+        //直连模式
+        String url = "direct://http://localhost:8333/getUserName?id="+id;
+      //  String url = "http://user-service/getUserName?id="+id;
         return genericRest.get(url, new ParameterizedTypeReference<String>() {}).getBody();
     }
 }

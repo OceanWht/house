@@ -62,8 +62,10 @@ public class GenericRest {
      * get方法
      */
     public <T> ResponseEntity<T> get(String url, ParameterizedTypeReference<T> responseType){
+
         RestTemplate template = getRestTemplate(url);
-        url.replace(directFlag,"");
+
+        url = url.replace(directFlag,"");
         //exchange既支持get,也支持post,HttpMethod指定 get方法没有body,用empty替换
         return template.exchange(url, HttpMethod.GET,HttpEntity.EMPTY,responseType);
     }
